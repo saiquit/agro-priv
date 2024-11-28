@@ -14,9 +14,6 @@
                 __('Nav.home') }}</a>
             <a href="{{ route('client.about', []) }}"
                 class="nav-item nav-link @if(request()->is('about')) active @endif">{{ __('Nav.about') }}</a>
-            {{-- <a href="service.html" class="nav-item nav-link">Service</a> --}}
-            {{-- <a href="{{ route('client.products', []) }}"
-                class="nav-item nav-link @if(request()->is('products')) active @endif">{{ __('Nav.products') }}</a> --}}
             <div class="nav-item dropdown">
                 <a href="{{ route('client.products') }}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
                     onclick="location.href='{{ route('client.products') }}';">{{ __('Nav.products') }}</a>
@@ -36,7 +33,7 @@
         <div class="d-none d-xl-flex me-3">
             <div class="d-flex flex-column pe-3 border-end border-primary">
                 {{-- <span class="text-body">Get Free Delivery</span> --}}
-                <a href="tel:+4733378901"><span class="text-primary">{{ App\Models\Setting::getValue('contact_phone_1') }}</span></a>
+                <a href="tel:{{ App\Models\Setting::getValue('contact_phone_1') }}"><span class="text-primary">{{ App\Models\Setting::getValue('contact_phone_1') }}</span></a>
             </div>
         </div>
         {{-- <button class="btn btn-primary btn-md-square d-flex flex-shrink-0 mb-3 mb-lg-0 rounded-circle me-3"

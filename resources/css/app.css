@@ -413,7 +413,7 @@
 .bg-breadcrumb {
     position: relative;
     overflow: hidden;
-    background: linear-gradient(rgba(0, 20, 66, 0.7), rgba(0, 20, 66, 0.7)), url(https://picsum.photos/1920/1080);
+    /* background: linear-gradient(rgba(0, 20, 66, 0.7), rgba(0, 20, 66, 0.7)), url(https://picsum.photos/1920/1080); */
     background-position: center top;
     background-repeat: no-repeat;
     background-size: cover;

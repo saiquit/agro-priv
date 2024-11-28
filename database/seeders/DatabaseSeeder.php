@@ -7,6 +7,8 @@ use App\Models\Event;
 use App\Models\Product;
 use App\Models\Review;
 use App\Models\Setting;
+use App\Models\Slide;
+use App\Models\Slider;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -25,9 +27,10 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@admin.com',
         ]);
 
-        Category::factory()->create(['name' => 'Aquaculture']);
-        Category::factory()->create(['name' => 'Pesticide']);
-        Category::factory()->create(['name' => 'Fertilize']);
+        Category::factory()->create(['name' => ['en' => 'Agriculture', 'bn' => 'কৃষি']]);
+        Category::factory()->create(['name' => ['en' => 'Pesticide', 'bn' => 'পেস্টিডি']]);
+        Category::factory()->create(['name' => ['en' => 'Fertilize', 'bn' => 'ফেতি']]);
+        Category::factory()->create(['name' => ['en' => 'Others', 'bn' => 'অন্যান্য']]);
 
         Category::all()->each(function ($category) {
             Product::factory(12)->create(['category_id' => $category->id])->each(function ($product) {
@@ -35,7 +38,6 @@ class DatabaseSeeder extends Seeder
             });
         });
         Event::factory(30)->create();
-
 
         // Settings
         $settings = [
@@ -93,5 +95,9 @@ class DatabaseSeeder extends Seeder
         foreach ($settings as $setting) {
             Setting::updateOrCreate(['key' => $setting['key']], $setting);
         }
+
+        $this->call([
+            PageSeeder::class
+        ]);
     }
 }

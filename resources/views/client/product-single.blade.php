@@ -2,14 +2,7 @@
 @section('title', ucfirst($product->name))
 
 @section('content')
-<!-- Product Banner Section -->
-<section class="container-fluid bg-breadcrumb">
-    <div class="product-banner d-flex align-items-center "
-        style="height: 1vh; background: url('{{url('/storage/'.$product->image)}}') center/cover; backdrop-filter: blur(10px);">
-        <div class="container text-center">
-        </div>
-</section>
-</div>
+<x-client.ui.section-header slug="products" />
 
 <!-- Main Content Section -->
 <div class="container my-5">
@@ -82,6 +75,39 @@
     </div>
     @endif
 
+    <!-- Testimonial Start -->
+    @if ($product->reviews->count() > 0)
+    <div class="container-fluid testimonial py-5">
+        <div class="container pb-5">
+            <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+                <h4 class="text-uppercase text-primary">Testimonials</h4>
+                <h1 class="display-4 text-capitalize mb-3">Our clients reviews.</h1>
+            </div>
+            <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.3s">
+                @foreach ($product->reviews as $review)
+                <div class="testimonial-item text-center p-4">
+                    <p>{{ $review->comment }}</p>
+                    <div class="d-flex justify-content-center mb-4">
+                        <img src="{{ $review->image ? url('storage/' . $review->image) : 'https://via.placeholder.com/150' }}"
+                            class="img-fluid border border-4 border-primary"
+                            style="width: 100px; height: 100px; border-radius: 50px;" alt="">
+                    </div>
+                    <div class="d-block">
+                        <h4 class="text-dark">{{ $review->customer_name }}</h4>
+                        <p class="m-0 pb-3">{{ $review->customer_profession }}</p>
+                        <div class="d-flex justify-content-center text-secondary">
+                            @for ($i = 0; $i < $review->rating; $i++)
+                                <i class="fas fa-star"></i>
+                                @endfor
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    @endif
+    <!-- Testimonial End -->
     <!-- Related Products Carousel -->
     <div class="row mt-5">
         <h3>Related Products</h3>
@@ -113,6 +139,10 @@
     </div>
 </div>
 
+
+@endsection
+
+@push('js')
 <script>
     document.querySelectorAll('[data-bs-toggle="modal"]').forEach(item => {
         item.addEventListener('click', event => {
@@ -121,9 +151,6 @@
         });
     });
 </script>
-@endsection
-
-@push('js')
 <script>
     $(document).ready(function () {
         $('#relatedProductsOwlCarousel').owlCarousel({

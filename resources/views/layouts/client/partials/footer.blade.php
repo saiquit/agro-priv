@@ -35,7 +35,7 @@
                 <div class="footer-item d-flex flex-column">
                     <h4 class="text-white mb-4">About Us</h4>
                     <a href="{{route('client.about')}}"><i class="fas fa-angle-right me-2"></i> Why Choose Us</a>
-                    <a href="{{route('client.about')}}"><i class="fas fa-angle-right me-2"></i> Contact us</a>
+                    <a href="{{route('client.contact')}}"><i class="fas fa-angle-right me-2"></i> Contact us</a>
                     <a href="{{route('client.terms-conditions')}}"><i class="fas fa-angle-right me-2"></i> Terms & Conditions</a>
                 </div>
             </div>

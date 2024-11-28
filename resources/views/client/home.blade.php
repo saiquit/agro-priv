@@ -287,14 +287,14 @@
             <h4 class="text-uppercase text-primary">Our Products</h4>
             <h1 class="display-3 text-capitalize mb-3">We Deliver High-Quality Agrochemical Solutions</h1>
         </div>
-        <div class="row g-4 justify-content-center">
+        <div class="row g-4 justify-content-center wow fadeInUp" data-wow-delay="0.4s">
             @foreach ($latestProducts as $product)
             <div class="col-md-4">
                 <x-client.product.product-card :product="$product" />
             </div>
             @endforeach
         </div>
-        <div class="d-flex justify-content-end g-4 my-4">
+        <div class="d-flex justify-content-end g-4 my-4 wow fadeInUp" data-wow-delay="0.6s">
             <a href="{{ route('client.products', []) }}" class="btn btn-primary py-3 px-4">See More</a>
         </div>
     </div>
