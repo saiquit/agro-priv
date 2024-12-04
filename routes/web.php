@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => '\App\Http\Controllers\Client', 'as' => 'client.'], function () {
@@ -21,3 +23,22 @@ Route::group(['namespace' => '\App\Http\Controllers\Client', 'as' => 'client.'],
     // terms
     Route::get('terms-conditions', 'PageController@termsConditios')->name('terms-conditions');
 });
+
+
+
+if (App::environment('local')) {
+    Route::get('/artisan', function () {
+        return view('client.artisan-commands');
+    });
+    Route::post('/run-command', function (\Illuminate\Http\Request $request) {
+        $command = $request->input('command');
+
+        try {
+            Artisan::call($command);
+            $output = Artisan::output();
+            return response()->json(['success' => true, 'message' => $output]);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()]);
+        }
+    });
+}

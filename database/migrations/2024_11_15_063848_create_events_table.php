@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('contact_site')->nullable();
 
             $table->string('registration_link')->nullable();
+            $table->date('registration_deadline')->nullable();
 
             $table->string('featured_image')->nullable();
             $table->string('gallery')->nullable();

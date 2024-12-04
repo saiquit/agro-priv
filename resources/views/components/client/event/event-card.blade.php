@@ -1,7 +1,7 @@
 <div class="col-lg-6 col-xl-4 d-flex align-items-stretch wow fadeInUp" data-wow-delay="{{ $loop->index * 0.2 + 0.2 }}s">
     <div class="blog-item d-flex flex-column">
         <div class="blog-img">
-            <img src="/assets/img/blog-1.jpg" class="img-fluid rounded-top w-100" alt="">
+            <img src="{{ $event->featured_image ? url('/storage/'.$event->featured_image) : asset('assets/img/blog-1.jpg') }}" class="img-fluid rounded-top w-100" alt="">
             <div class="blog-date px-4 py-2"><i class="fa fa-calendar-alt me-1"></i> {{
                 \Carbon\Carbon::parse($event->date)->format('M d, Y') }}</div>
         </div>

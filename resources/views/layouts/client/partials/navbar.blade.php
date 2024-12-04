@@ -10,13 +10,12 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto py-0">
-            <a href="{{ route('client.home', []) }}" class="nav-item nav-link @if (request()->is('/')) active @endif">{{
-                __('Nav.home') }}</a>
+            <a href="{{ route('client.home', []) }}" class="nav-item nav-link @if (request()->is('/')) active @endif">@lang('nav.home')</a>
             <a href="{{ route('client.about', []) }}"
-                class="nav-item nav-link @if(request()->is('about')) active @endif">{{ __('Nav.about') }}</a>
+                class="nav-item nav-link @if(request()->is('about')) active @endif">{{ __('nav.about') }}</a>
             <div class="nav-item dropdown">
                 <a href="{{ route('client.products') }}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-                    onclick="location.href='{{ route('client.products') }}';">{{ __('Nav.products') }}</a>
+                    onclick="location.href='{{ route('client.products') }}';">{{ __('nav.products') }}</a>
                 <div class="dropdown-menu m-0">
                     @foreach (App\Models\Category::all() as $category)
                     <a href="{{ route('client.category', ['slug' => $category->slug]) }}" class="dropdown-item">{{
@@ -26,9 +25,9 @@
             </div>
 
             <a href="{{ route('client.events', []) }}"
-                class="nav-item nav-link @if(request()->is('events')) active @endif">{{ __('Nav.events') }}</a>
+                class="nav-item nav-link @if(request()->is('events')) active @endif">{{ __('nav.events') }}</a>
 
-            <a href="{{ route('client.contact', []) }}" class="nav-item nav-link">{{ __('Nav.contact') }}</a>
+            <a href="{{ route('client.contact', []) }}" class="nav-item nav-link">{{ __('nav.contact') }}</a>
         </div>
         <div class="d-none d-xl-flex me-3">
             <div class="d-flex flex-column pe-3 border-end border-primary">

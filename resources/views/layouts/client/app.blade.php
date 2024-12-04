@@ -31,6 +31,7 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('/assets/css/bootstrap.min.css') }}" rel="stylesheet">
 
+    @stack('css')
     <!-- Template Stylesheet -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     {{--
